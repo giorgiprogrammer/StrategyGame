@@ -4,7 +4,7 @@ body{
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100vh; /* Adjust height as needed */
-  
+  overflow: hidden;
   
   
 }
@@ -92,7 +92,7 @@ body{
   flex-direction: row; /* This arranges the child divs in a row */
   justify-content: space-around; /* Optional: This evenly distributes the space between the divs */
   align-items: center; /* Optional: This aligns the items vertically centered */
-  font-size: 2vw;
+  font-size: 1.6vw;
   color: rgb(199, 199, 199);
   left: 35vw;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -100,29 +100,54 @@ body{
 #easy{
   height: 3vw;
   width: 8vw;
-  background-color: #99890ec7;
+  background-image: linear-gradient(180deg, rgb(13, 125, 144), rgb(21, 127, 166));
   border-radius: 2vw;
   text-align: center;
   cursor: pointer;
+  line-height: 2.5vw;
+  filter: grayscale(50%);
 }
 #normal{
   height: 3vw;
   width: 8vw;
-  background-color: #b63e1ac6;
+  background-image: linear-gradient(180deg, rgb(213, 31, 186), rgb(134, 13, 98));
   border-radius: 2vw;
   text-align: center;
   cursor: pointer;
+  line-height: 2.5vw;
+  filter: grayscale(50%);
 }
 #hard{
   height: 3vw;
   width: 8vw;
-  background-color: #ff0101ac;
+  background-image: linear-gradient(180deg, rgb(238, 46, 46), rgb(185, 7, 7));
   border-radius: 2vw;
   text-align: center;
   cursor: pointer;
+  line-height: 2.5vw;
+  filter: grayscale(30%);
 }
 #hard:hover,#normal:hover,#easy:hover{
-  background-image: linear-gradient(180deg, rgb(199, 199, 199), rgb(255, 255, 157));/* Example hover background color */
-  color: rgb(27, 25, 25);
+  filter: grayscale(0%);
+  color: rgb(205, 198, 198);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Example box shadow on hover */
+  
+}
+#startBtn{
+  top: 40vw;
+  position: absolute;
+  height: 3vw;
+  width: 8vw;
+  right: 2vw;
+
+  border-radius: 2vw;
+  text-align: center;
+  cursor: pointer;
+  font-size: 2vw;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#startBtn:hover{
+  background-image: linear-gradient(180deg, rgb(14, 154, 30), rgb(22, 125, 13));/* Example hover background color */
+  color: rgb(227, 227, 227);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

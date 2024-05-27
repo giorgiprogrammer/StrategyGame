@@ -15,10 +15,10 @@ import playMusicImg from './images/pauseMusicLogo.png';
 import pauseMusicImg from './images/playMusicLogo.png';
 import musicMP3 from './musics/backMusic.mp3';
 import backgroundImg from './images/background.png';
-
+import scroll from './images/scroll.png';
 const AudioPlayer = ({ musicMP3, isPlaying }) => {
   const audioRef = useRef(null);
-
+  let choosedCountrey="";
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
@@ -40,11 +40,37 @@ function App() {
     setIsPlaying(!isPlaying);
     setMusicImgSrc(!isPlaying ? pauseMusicImg : playMusicImg);
   };
-
+  function gameStart(countrey,dificulty){
+    
+    if (countrey==undefined||dificulty==undefined) {
+      alert("Choose countrey and difficulty")
+    }
+  }
+  let choosedCountrey="";
+  function getCountrey(countrey){
+    if(choosedCountrey===countrey){
+      choosedCountrey=undefined;
+    }
+    else{
+      choosedCountrey=countrey;
+    console.log(choosedCountrey)
+    }
+    
+  }
+  let choosedDifficulty="";
+  function getDifficulties(dif){
+    if(choosedDifficulty===dif){
+      choosedDifficulty=undefined;
+    }
+    else{
+      choosedDifficulty=dif;
+    console.log(choosedDifficulty)
+    }
+  }
   function counteries() {
     return (
       <div className="optionsOfCountrey">
-        <div className="england">
+        <div className="england" onClick={() => getCountrey("england")}>
           <img
             src={englandImg}
             alt="England"
@@ -52,7 +78,7 @@ function App() {
           />{' '}
           England
         </div>
-        <div className="france">
+        <div className="france" onClick={() => getCountrey("france")}>
           <img
             src={francedImg}
             alt="France"
@@ -60,7 +86,7 @@ function App() {
           />{' '}
           France
         </div>
-        <div className="germans">
+        <div className="germans" onClick={() => getCountrey("german")}>
           <img
             src={germanImg}
             alt="German"
@@ -68,7 +94,7 @@ function App() {
           />{' '}
           German
         </div>
-        <div className="spain">
+        <div className="spain" onClick={() => getCountrey("spain")}>
           <img
             src={spainImg}
             alt="Spain"
@@ -76,7 +102,7 @@ function App() {
           />{' '}
           Spain{' '}
         </div>
-        <div className="vikings">
+        <div className="vikings" onClick={() => getCountrey("vikings")}>
           <img
             src={vikingImg}
             alt="Viking"
@@ -84,7 +110,7 @@ function App() {
           />{' '}
           Vikings
         </div>
-        <div className="byzanties">
+        <div className="byzanties" onClick={() => getCountrey("byzanty")}>
           <img
             src={bizantieImg}
             alt="Bizantie"
@@ -92,7 +118,7 @@ function App() {
           />{' '}
           Byzanty
         </div>
-        <div className="turks">
+        <div className="turks" onClick={() => getCountrey("turks")}>
           <img
             src={turkImg}
             alt="Turk"
@@ -100,7 +126,7 @@ function App() {
           />{' '}
           Turks
         </div>
-        <div className="russian">
+        <div className="russian" onClick={() => getCountrey("russian")}>
           <img
             src={russianImg}
             alt="Russian"
@@ -108,7 +134,7 @@ function App() {
           />{' '}
           Russian
         </div>
-        <div className="moors">
+        <div className="moors" onClick={() => getCountrey("moors")}>
           <img
             src={moorsImg}
             alt="Moors"
@@ -116,7 +142,7 @@ function App() {
           />{' '}
           Moors
         </div>
-        <div className="arabs">
+        <div className="arabs" onClick={() => getCountrey("arabs")}>
           <img
             src={arabianImg}
             alt="Arabian"
@@ -124,7 +150,7 @@ function App() {
           />{' '}
           Arabs
         </div>
-        <div className="mongols">
+        <div className="mongols" onClick={() => getCountrey("mongols")}>
           <img
             src={mongolImg}
             alt="Mongol"
@@ -147,6 +173,7 @@ function App() {
           left: '0vw',
           width: '100vw',
           filter: 'grayscale(40%)',
+          zIndex:-4,
         }}
       />
       <div className="music" onClick={togglePlay}>
@@ -161,11 +188,29 @@ function App() {
       <br></br>
       <br></br>
       <div className='dificulties'>
-        <div id="easy">Easy</div>
-        <div id ="normal">Normal</div>
-        <div id="hard">Hard</div>
+        <div id="easy" onClick={() => getDifficulties("easy")}>Easy</div>
+        <div id ="normal" onClick={() => getDifficulties("normal")}>Normal</div>
+        <div id="hard" onClick={() => getDifficulties("hard")}>Hard</div>
       </div>
+      <div id="startBtn" onClick={gameStart}>Start</div>
+      <img
+        src={scroll}
+        alt="scroll"
+        style={{
+          position: 'absolute',
+          top: '0.5vw',
+          left: '0vw',
+          width: '20vw',
+          height:"39.5vw",
+          left:"40.1vw",
+          filter: 'grayscale(70%)',
+          opacity:0.7,
+          zIndex:-3,
+        }}
+      />
     </div>
+    
+    
   );
 }
 
