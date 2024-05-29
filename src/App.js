@@ -18,7 +18,7 @@ import backgroundImg from './images/background.png';
 import scroll from './images/scroll.png';
 const AudioPlayer = ({ musicMP3, isPlaying }) => {
   const audioRef = useRef(null);
-  let choosedCountrey="";
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
@@ -40,13 +40,16 @@ function App() {
     setIsPlaying(!isPlaying);
     setMusicImgSrc(!isPlaying ? pauseMusicImg : playMusicImg);
   };
-  function gameStart(countrey,dificulty){
+  function gameStart(){
     
-    if (countrey==undefined||dificulty==undefined) {
+    if (choosedCountrey==undefined||choosedDifficulty==undefined) {
       alert("Choose countrey and difficulty")
     }
+    else{
+      alert("start game")
+    }
   }
-  let choosedCountrey="";
+  let choosedCountrey=undefined;
   function getCountrey(countrey){
     if(choosedCountrey===countrey){
       choosedCountrey=undefined;
@@ -57,7 +60,7 @@ function App() {
     }
     
   }
-  let choosedDifficulty="";
+  let choosedDifficulty=undefined;
   function getDifficulties(dif){
     if(choosedDifficulty===dif){
       choosedDifficulty=undefined;
@@ -192,7 +195,7 @@ function App() {
         <div id ="normal" onClick={() => getDifficulties("normal")}>Normal</div>
         <div id="hard" onClick={() => getDifficulties("hard")}>Hard</div>
       </div>
-      <div id="startBtn" onClick={gameStart}>Start</div>
+      <div id="startBtn" onClick={() => gameStart()}>Start</div>
       <img
         src={scroll}
         alt="scroll"
